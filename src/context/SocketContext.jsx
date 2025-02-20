@@ -10,7 +10,7 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io('http://localhost:1337'); // Connect to Strapi WebSocket server
+    const newSocket = io(process.env.NEXT_PUBLIC_BACKEND_URL); // Connect to Strapi WebSocket server
     newSocket.on('connect', function() {
       console.log('connected to the server');
     });
