@@ -15,9 +15,15 @@ function Chat() {
   const router = useRouter();
   const { openModal } = useModal();
 
-  const userId = localStorage.getItem('email');
+  const [roomId, setRoomId] = useState(null);
 
-  const roomId = userId;
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedUserId = localStorage.getItem('email');
+      setRoomId(storedUserId);
+    }
+  }, [])
 
   useEffect(() => {
     const fetchIt = async () => {
